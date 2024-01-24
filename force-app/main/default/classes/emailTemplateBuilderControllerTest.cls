@@ -6,7 +6,7 @@ public with sharing class emailTemplateBuilderControllerTest {
         List<User> users = [SELECT Id, FirstName, LastName 
                             FROM User 
                             WHERE IsActive = true 
-                            AND Profile.Name = 'EOSI PM Partner User' 
+                            AND Profile.Name = 'Partner User' 
                             LIMIT 99];
         
         for (User u : users) {

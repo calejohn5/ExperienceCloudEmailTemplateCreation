@@ -17,7 +17,7 @@ private class emailTemplateListControllerTest {
     
         // 2. Create the User in a separate context
         System.runAs(new User(Id = UserInfo.getUserId())) {
-            Profile p = [SELECT Id FROM Profile WHERE Name = 'EOSI PM Partner User' LIMIT 1];
+            Profile p = [SELECT Id FROM Profile WHERE Name = 'Partner User' LIMIT 1];
             testUser = new User(
                 Alias = 'testu',
                 Email = 'testuser@example.com',

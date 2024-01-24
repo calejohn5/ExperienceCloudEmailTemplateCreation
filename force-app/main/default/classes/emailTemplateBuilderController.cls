@@ -12,8 +12,8 @@ public without sharing class emailTemplateBuilderController {
         if (runningUser.ContactId != null) {
             Contact userContact = [SELECT Id, Name, Contact_Type__c FROM Contact WHERE Id = :runningUser.ContactId LIMIT 1];
             
-            if (userContact.Contact_Type__c == 'EOS Administrative Assistant' && runningUser.Contact.AccountId != null) {
-                Contact implementerContact = [SELECT Name FROM Contact WHERE AccountId = :runningUser.Contact.AccountId AND Contact_Type__c = 'EOS Implementer' LIMIT 1];
+            if (userContact.Contact_Type__c == 'Administrative Assistant' && runningUser.Contact.AccountId != null) {
+                Contact implementerContact = [SELECT Name FROM Contact WHERE AccountId = :runningUser.Contact.AccountId AND Contact_Type__c = 'Client Contact' LIMIT 1];
                 if (implementerContact != null) {
                     runningUserName = implementerContact.Name;
                 }
@@ -45,17 +45,17 @@ public without sharing class emailTemplateBuilderController {
             throw new EmailTemplateFolderNotFoundException('An Email Template with that name already exists.');
         }
 
-        EOS_Miscellaneous_Configuration__mdt config = [
+        Miscellaneous_Configuration__mdt config = [
             SELECT Label, Value__c
-            FROM EOS_Miscellaneous_Configuration__mdt
-            WHERE Label = 'EOS Implementer Letterhead'
+            FROM Miscellaneous_Configuration__mdt
+            WHERE Label = 'Client Contact Letterhead'
             LIMIT 1
         ];
         List<EnhancedLetterhead> letterheads = [
             SELECT Id, Name FROM EnhancedLetterhead WHERE Name = :config.Value__c LIMIT 1
         ];
         if (letterheads.isEmpty()) {
-            throw new EnhancedLetterheadNotFoundException('Enhanced Letterhead named EOS Implementer Letterhead does not exist.');
+            throw new EnhancedLetterheadNotFoundException('Enhanced Letterhead named Client Contact Letterhead does not exist.');
         }
         EnhancedLetterhead letterhead = letterheads[0]; // assuming there is only one
         

@@ -8,7 +8,7 @@ public with sharing class emailTemplateListController {
     public static List<EmailTemplateWrapper> getEmailTemplates() {
         List<EmailTemplateWrapper> templatesWrapper = new List<EmailTemplateWrapper>();
     
-        Folder excludeFolder = [SELECT Id FROM Folder WHERE DeveloperName = 'EOSIEmailTemplatesPM' LIMIT 1];
+        Folder excludeFolder = [SELECT Id FROM Folder WHERE DeveloperName = 'EmailTemplatesFolder' LIMIT 1];
 
         if (excludeFolder != null) {
             for (EmailTemplate template : [SELECT Id, Name, RelatedEntityType, Description, HtmlValue, LastModifiedDate, LastModifiedBy.Name 
