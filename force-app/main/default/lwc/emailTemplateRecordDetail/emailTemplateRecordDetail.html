@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Email Template Details" icon-name="custom:custom14">
+        <template if:true={emailTemplate}>
+            <div class="slds-m-around_medium">
+                <lightning-input label="Name" value={emailTemplate.Name} onchange={handleNameChange}></lightning-input>
+                <div class="slds-m-bottom_medium">
+                    <lightning-combobox 
+                        label="Related Entity Type"
+                        value={emailTemplate.RelatedEntityType}
+                        options={relatedEntityTypeOptions}
+                        onchange={handleRelatedEntityTypeChange}
+                        required>
+                    </lightning-combobox>
+                </div>
+                <lightning-textarea label="Description" value={emailTemplate.Description} onchange={handleDescriptionChange}></lightning-textarea>
+                <lightning-input label="Subject" value={emailTemplate.Subject} onchange={handleSubjectChange}></lightning-input>
+                <lightning-input-rich-text label="HtmlValue" value={emailTemplateHtmlValue} onchange={handleBodyChange}></lightning-input-rich-text>
+                <!-- merge field button -->
+                <div class="slds-col slds-col_bump-right">
+                    <lightning-combobox
+                        label="Insert merge field"
+                        options={fieldsOptions}
+                        onchange={handleFieldSelection}
+                        value={selectedFieldApiName}
+                        class="slds-size_small mergeFieldDropdown"
+                    ></lightning-combobox>
+                </div>
+                <!-- Button group at the bottom of the card -->
+                <div slot="footer">
+                    <div class="slds-align_absolute-center slds-m-top_medium button-group-padding">
+                        <!-- Cancel button -->
+                        <lightning-button label="Cancel" onclick={handleCancel} variant="neutral" class="slds-m-right_small"></lightning-button>
+                        <!-- Save button -->
+                        <lightning-button data-id="saveButton" label="Save" onclick={handleSave} variant="brand"></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template if:true={error}>
+            <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                <span class="slds-assistive-text">error</span>
+                <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                    <lightning-icon icon-name="utility:error" variant="inverse" size="x-small"></lightning-icon>
+                </span>
+                <h2>{error.body.message}</h2>
+            </div>
+        </template>
+    </lightning-card>
+</template>

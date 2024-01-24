@@ -1,0 +1,3 @@
+**/.*  # Ignore hidden files like .DS_Store
+**/*.log  # Ignore log files
+# Specify any other files/folders you want Git to ignore

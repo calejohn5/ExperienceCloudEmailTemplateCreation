@@ -1,0 +1,11 @@
+/* Move the button group to the right */
+div[slot="footer"] .slds-align_absolute-center {
+    justify-content: flex-end;
+}
+.dropdownClassName {
+    max-height: 300px; /* adjust as needed */
+    overflow-y: auto;
+}
+.button-group-padding {
+    padding-bottom: 210px; /* You can adjust the value as desired */
+}
