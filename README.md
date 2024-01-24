@@ -2,7 +2,7 @@ Standard Salesforce functionality doesn’t allow experience users to create, up
 
 Created was 3 LWCs named emailTemplateBuilder, emailTemplateList, and emailTemplateRecordDetail. There are also 2 apex classes to handle the backend, named emailTemplateBuilderController and emailTemplateListController.
 
-emailTemplateList - This is the page PM users first view when clicking the tab.  It is a mock record list page to allow users to view and search for existing templates. This LWC contains searchability and pagination as seen below. Users are also allowed to make deletes from the dropdown arrow.
+emailTemplateList - This is the page Experience Cloud users first view when clicking the tab.  It is a mock record list page to allow users to view and search for existing templates. This LWC contains searchability and pagination as seen below. Users are also allowed to make deletes from the dropdown arrow.
 This has potential to be turned into a lightning data-table in the future to allow filtering by fields and changing column width.
 ![755d7f89-b1ea-4b6d-a7fa-d518807a109a](https://github.com/calejohn5/ExperienceCloudEmailTemplateCreation/assets/34465547/d0a456e4-8f6f-4364-b6ab-f7e573f2d637)
 
